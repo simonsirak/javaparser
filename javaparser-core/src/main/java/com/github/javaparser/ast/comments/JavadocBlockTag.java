@@ -59,7 +59,8 @@ public class JavadocBlockTag extends Node {
     }
 
     /**
-     * Set the description of the block tag     
+     * Set the description of the block tag.
+     *   
      * @param description describes the tag
      * @return new version of current object
      */
@@ -76,7 +77,8 @@ public class JavadocBlockTag extends Node {
     }
 
     /**
-     * Set the type of the block tag     
+     * Set the type of the block tag.
+     *      
      * @param type the block tag type
      * @return new version of current object
      */
