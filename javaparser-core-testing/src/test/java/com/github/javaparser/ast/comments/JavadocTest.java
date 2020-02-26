@@ -18,60 +18,68 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  */
-
 package com.github.javaparser.ast.comments;
 
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.printer.PrettyPrinterConfiguration;
 import org.junit.jupiter.api.Test;
-
-import static com.github.javaparser.StaticJavaParser.parse;
-import static com.github.javaparser.utils.TestUtils.assertEqualsNoEol;
+import com.github.javaparser.javadoc.Javadoc;
+import com.github.javaparser.javadoc.description.JavadocDescription;
 import static com.github.javaparser.utils.Utils.EOL;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.github.javaparser.StaticJavaParser.parse;
+import com.github.javaparser.printer.PrettyPrinterConfiguration;
+import static com.github.javaparser.utils.TestUtils.assertEqualsNoEol;
 
-class CommentTest {
+/**
+ * Tests for JavaDoc parsing.
+ */
+class JavadocTest { 
 
     private static final PrettyPrinterConfiguration PRETTY_PRINTER_CONFIG_TWO_INDENT = new PrettyPrinterConfiguration().setIndentSize(2);
 
     @Test
-    void removeOrphanComment() {
-        ClassOrInterfaceDeclaration decl = new ClassOrInterfaceDeclaration(new NodeList<>(), false, "A");
-        Comment c = new LineComment("A comment");
-        decl.addOrphanComment(c);
-        assertEquals(1, decl.getOrphanComments().size());
-        assertTrue(c.remove());
-        assertEquals(0, decl.getOrphanComments().size());
+    void testReplaceDuplicateJavaDocComment() {
+        // Arrange
+        CompilationUnit cu = parse("public class MyClass {" + EOL +
+                EOL +
+                "  /**" + EOL +
+                "   * Comment A" + EOL +
+                "   */" + EOL +
+                "  public void oneMethod() {" + EOL +
+                "  }" + EOL +
+                EOL +
+                "  /**" + EOL +
+                "   * Comment A" + EOL +
+                "   */" + EOL +
+                "  public void anotherMethod() {" + EOL +
+                "  }" + EOL +
+                "}" + EOL);
+
+        MethodDeclaration methodDeclaration = cu.findFirst(MethodDeclaration.class).get();
+
+        // Act
+        Javadoc javadoc = new Javadoc(JavadocDescription.parseText("Change Javadoc"));
+        methodDeclaration.setJavadocComment("", javadoc);
+
+        // Assert
+        assertEqualsNoEol("public class MyClass {\n" +
+                "\n" +
+                "  /**\n" +
+                "   * Change Javadoc\n" +
+                "   */\n" +
+                "  public void oneMethod() {\n" +
+                "  }\n" +
+                "\n" +
+                "  /**\n" +
+                "   * Comment A\n" +
+                "   */\n" +
+                "  public void anotherMethod() {\n" +
+                "  }\n" +
+                "}\n", cu.toString(PRETTY_PRINTER_CONFIG_TWO_INDENT));
     }
 
     @Test
-    void removeAssociatedComment() {
-        ClassOrInterfaceDeclaration decl = new ClassOrInterfaceDeclaration(new NodeList<>(), false, "A");
-        Comment c = new LineComment("A comment");
-        decl.setComment(c);
-        assertTrue(decl.getComment().isPresent());
-        assertTrue(c.remove());
-        assertFalse(decl.getComment().isPresent());
-    }
-
-    @Test
-    void cannotRemoveCommentNotUsedAnywhere() {
-        Comment c = new LineComment("A comment");
-        assertFalse(c.remove());
-    }
-
-    @Test
-    void unicodeEscapesArePreservedInComments() {
-        CompilationUnit cu = parse("// xxx\\u2122xxx");
-        Comment comment = cu.getAllContainedComments().get(0);
-        assertEquals(" xxx\\u2122xxx", comment.getContent());
-    }
-
-    @Test
-    void testRemoveDuplicateComment() {
+    void testRemoveDuplicateJavaDocComment() {
         // Arrange
         CompilationUnit cu = parse("public class MyClass {" + EOL +
                 EOL +
@@ -89,22 +97,22 @@ class CommentTest {
                 "}" +
                 EOL);
 
-        MethodDeclaration methodDeclaration = cu.findFirst(MethodDeclaration.class).get();
+        MethodDeclaration methodDeclaration = cu.findAll(MethodDeclaration.class).get(1);
 
         // Act
-        methodDeclaration.removeComment();
+        methodDeclaration.removeJavaDocComment();
 
         // Assert
         assertEqualsNoEol("public class MyClass {\n" +
                 "\n" +
-                "  public void oneMethod() {\n" +
-                "  }\n" +
-                "\n" +
                 "  /**\n" +
                 "   * Comment A\n" +
                 "   */\n" +
+                "  public void oneMethod() {\n" +
+                "  }\n" +
+                "\n" +
                 "  public void anotherMethod() {\n" +
                 "  }\n" +
                 "}\n", cu.toString(PRETTY_PRINTER_CONFIG_TWO_INDENT));
-    }   
+    }
 }
