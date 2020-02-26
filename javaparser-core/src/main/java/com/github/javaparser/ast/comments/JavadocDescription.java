@@ -35,16 +35,16 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
  */
 public class JavadocDescription extends Node {
     private String description; 
-    private NodeList<JavadocBlockTag> inlineTags;   
+    private NodeList<JavadocDescriptionElement> elements;   
 
     public JavadocDescription() {
-        this(null, "", new NodeList<JavadocBlockTag>());
+        this(null, "", new NodeList<JavadocDescriptionElement>());
     }
 
-    public JavadocDescription(TokenRange tokenRange, String content, NodeList<JavadocBlockTag> inlineTags){
+    public JavadocDescription(TokenRange tokenRange, String content, NodeList<JavadocDescriptionElement> elements){
         super(tokenRange);
         setDescription(content);
-        setInlineTags(inlineTags);
+        setElements(elements);
     }
 
     /**
@@ -71,20 +71,21 @@ public class JavadocDescription extends Node {
     }
 
     /**
-     * Set inline tags of current description.
+     * Set elements of current description such as text snippet or inline tags.
      * 
-     * @param inlineTags list containing all inline tags 
+     * @param elements list containing all elements 
      * @return new version of current object
      */
-    public JavadocDescription setInlineTags(NodeList<JavadocBlockTag> inlineTags) {
-        if (inlineTags == this.inlineTags) {
+    public JavadocDescription setElements(NodeList<JavadocDescriptionElement> elements) {
+        assertNotNull(elements);
+        if (elements == this.elements) {
             return this;
         }        
-        notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.inlineTags, inlineTags);
-        if (this.inlineTags != null)
-            this.inlineTags.setParentNode(null);
-        this.inlineTags = inlineTags;
-        setAsParentNodeOf(inlineTags);
+        notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.elements, elements);
+        if (this.elements != null)
+            this.elements.setParentNode(null);
+        this.elements = elements;
+        setAsParentNodeOf(elements);
         return this;
     }
 

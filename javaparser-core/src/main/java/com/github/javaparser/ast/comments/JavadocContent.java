@@ -106,7 +106,7 @@ public class JavadocContent extends Node {
     }
 
     /**
-     * Return the text content of the document. It does not containing trailing spaces and asterisks
+     * Return the text content of the document. It does not contain trailing spaces or asterisks
      * at the start of the line.
      */
     public String toText() {

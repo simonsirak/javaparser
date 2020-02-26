@@ -23,7 +23,7 @@ package com.github.javaparser.ast.comments;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.javadoc.description.JavadocDescriptionElement;
+import com.github.javaparser.ast.comments.JavadocDescriptionElement;
 import com.github.javaparser.javadoc.description.JavadocInlineTag;
 import com.github.javaparser.javadoc.description.JavadocSnippet;
 import org.junit.jupiter.api.Test;
@@ -60,7 +60,8 @@ class JavadocTest {
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescription() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", null);
+        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
+            new NodeList<JavadocDescriptionElement>());
         JavadocContent javadoc = new JavadocContent(null, description, new NodeList<JavadocBlockTag>());
         assertEquals("first line" + EOL + "second line" + EOL, javadoc.toText());
     }
@@ -68,8 +69,10 @@ class JavadocTest {
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescriptionAndOneBlockTag() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", null);
-        JavadocDescription tagDescription = new JavadocDescription(null, "something useful", null);
+        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
+            new NodeList<JavadocDescriptionElement>());
+        JavadocDescription tagDescription = new JavadocDescription(null, "something useful", 
+            new NodeList<JavadocDescriptionElement>());
         JavadocBlockTag tag = new JavadocBlockTag(null, tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
 
         NodeList<JavadocBlockTag> tags = new NodeList<JavadocBlockTag>().addLast(tag);
