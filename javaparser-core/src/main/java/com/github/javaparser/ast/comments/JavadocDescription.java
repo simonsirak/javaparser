@@ -63,6 +63,13 @@ public class JavadocDescription extends Node {
         return this;
     }
 
+    // TODO: NOT FINISHED
+    public String toText() {
+        StringBuilder sb = new StringBuilder().append(description);
+        //elements.forEach(e -> sb.append(e.toText()));
+        return sb.toString();
+    }
+
     /**
      * Set inline tags of current description.
      * 

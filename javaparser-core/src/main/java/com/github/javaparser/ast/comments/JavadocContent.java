@@ -28,6 +28,8 @@ import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
+import static com.github.javaparser.utils.Utils.EOL;
+
 /**
  * A JavaDoc content node.
  * 
@@ -89,6 +91,39 @@ public class JavadocContent extends Node {
         this.blockTags = blockTags;
         setAsParentNodeOf(blockTags);
         return this;
+    }
+
+    public void addBlockTag(JavadocBlockTag blockTag) {
+        if(blockTags == null) {
+            blockTags = new NodeList<JavadocBlockTag>();
+        }
+
+        blockTags.add(blockTag);
+    }
+
+    public NodeList<JavadocBlockTag> getBlockTags() {
+        return blockTags;
+    }
+
+    /**
+     * Return the text content of the document. It does not containing trailing spaces and asterisks
+     * at the start of the line.
+     */
+    public String toText() {
+        // TODO: NOT FINISHED
+        StringBuilder sb = new StringBuilder();
+        if (!description.toText().isEmpty()) {
+            sb.append(description.toText());
+            sb.append(EOL);
+        }
+        if (!blockTags.isEmpty()) {
+            sb.append(EOL);
+        }
+        blockTags.forEach(bt -> {
+            sb.append(bt.toText());
+            sb.append(EOL);
+        });
+        return sb.toString();
     }
 
     @Override

@@ -50,12 +50,29 @@ public class JavadocBlockTag extends Node {
         THROWS,
         VERSION,
         UNKNOWN;
+
+        public String toString() {
+            return this.name().toLowerCase();
+        }
     }
 
     protected JavadocBlockTag(TokenRange tokenRange, JavadocDescription description, BlockTagType type) {
         super(tokenRange);
         setDescription(description);
         setType(type);
+    }
+
+    // TODO: Use optional instead of null check ?
+    public String toText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("@");
+        sb.append(type.toString());
+
+        if (!description.toText().isEmpty()) {
+            sb.append(" ");
+            sb.append(description.toText());
+        }
+        return sb.toString();
     }
 
     /**
