@@ -25,9 +25,11 @@ import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.javadoc.Javadoc;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.visitor.CloneVisitor;
 import com.github.javaparser.metamodel.JavadocCommentMetaModel;
 import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.TokenRange;
 import java.util.function.Consumer;
 import java.util.Optional;
@@ -41,23 +43,79 @@ import static com.github.javaparser.StaticJavaParser.parseJavadoc;
  */
 public class JavadocComment extends Comment {
 
+    private JavadocDescription description;
+    private NodeList<JavadocBlockTag> blockTags;
     
     public JavadocComment() {
-        this(null, "empty");
+        this(null, new JavadocDescription(), new NodeList<JavadocBlockTag>());
     }
 
     @AllFieldsConstructor
-    public JavadocComment(String content) {
-        this(null, content);
+    public JavadocComment(JavadocDescription description, NodeList<JavadocBlockTag> blockTags) {
+        this(null, description, blockTags);
     }
 
     /**
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
-    public JavadocComment(TokenRange tokenRange, String content) {
-        super(tokenRange, content);
+    public JavadocComment(TokenRange tokenRange, JavadocDescription description, NodeList<JavadocBlockTag> blockTags) {
+        super(tokenRange, "");
+        setDescription(description);
+        setBlockTags(blockTags);
         customInitialization();
+    }
+
+    public JavadocComment setDescription(JavadocDescription description) {
+        // MAYBE we should not say that null == empty
+        //if (description == null) {
+        //    description = new JavadocDescription();
+        //}
+        if (description == this.description) {
+            return this;
+        }
+        // TODO: Add observable property for JavadocDescription and the other tags.
+        notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.description, description);
+        if (this.description != null)
+            this.description.setParentNode(null);
+        this.description = description;
+        setAsParentNodeOf(description);
+        return this;
+    }
+
+    public JavadocComment setBlockTags(NodeList<JavadocBlockTag> blockTags) {
+        // MAYBE we should not say that null == empty
+        //if (description == null) {
+        //    description = new JavadocDescription();
+        //}
+        if (blockTags == this.blockTags) {
+            return this;
+        }
+        // TODO: Add observable property for JavadocDescription and the other tags.
+        notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.blockTags, blockTags);
+        if (this.blockTags != null)
+            this.blockTags.setParentNode(null);
+        this.blockTags = blockTags;
+        setAsParentNodeOf(blockTags);
+        return this;
+    }
+
+    /**
+     * Get description of comment
+     * 
+     * @return description
+     */
+    public JavadocDescription getDescription() {
+        return description;
+    }
+
+    /**
+     * Get every blog tag of comment
+     * 
+     * @return all block tags
+     */
+    public NodeList<JavadocBlockTag> getBlockTags() {
+        return blockTags;
     }
 
     @Override

@@ -23,6 +23,7 @@ package com.github.javaparser.ast.comments;
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import static com.github.javaparser.utils.Utils.assertNotNull;
 
@@ -54,6 +55,11 @@ public class JavadocInlineTag extends JavadocDescriptionElement {
 
     public JavadocInlineTag() {
         this(null, InlineTagType.UNKNOWN, "");
+    }
+
+    @AllFieldsConstructor
+    public JavadocInlineTag(InlineTagType type, String content) {
+        this(null, type, content);
     }
 
     public JavadocInlineTag(TokenRange tokenRange, InlineTagType type, String content) {
@@ -92,6 +98,24 @@ public class JavadocInlineTag extends JavadocDescriptionElement {
         notifyPropertyChange(ObservableProperty.CONTENT, this.content, content);
         this.content = content;
         return this;
+    }
+
+    /**
+     * Return type of inline tag.
+     * 
+     * @return type of tag
+     */
+    public InlineTagType getType() {
+        return type;
+    }
+
+     /**
+     * Return string description of inline tag.
+     * 
+     * @return description of tag
+     */
+    public String getString() {
+        return content;
     }
 
     /**

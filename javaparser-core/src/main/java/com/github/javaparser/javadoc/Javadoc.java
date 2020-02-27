@@ -124,7 +124,7 @@ public class Javadoc {
         }
         sb.append(indentation);
         sb.append(" ");
-        return new JavadocComment(sb.toString());
+        return new JavadocComment();
     }
 
     public JavadocDescription getDescription() {

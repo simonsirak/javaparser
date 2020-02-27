@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2007-2010 Júlio Vilmar Gesser.
  * Copyright (C) 2011, 2013-2020 The JavaParser Team.
  *
@@ -47,7 +47,7 @@ abstract class GeneratedJavaParserTokenManagerBase {
     static Comment createCommentFromToken(Token token) {
         String commentText = token.image;
         if (token.kind == JAVADOC_COMMENT) {
-            return new JavadocComment(tokenRange(token), commentText.substring(3, commentText.length() - 2));
+            return new JavadocComment();
         } else if (token.kind == MULTI_LINE_COMMENT) {
             return new BlockComment(tokenRange(token), commentText.substring(2, commentText.length() - 2));
         } else if (token.kind == SINGLE_LINE_COMMENT) {

@@ -20,6 +20,7 @@
  */
 package com.github.javaparser.ast.comments;
 
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -32,12 +33,18 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
  * @author Simon Sirak & David Johansson
  */
 public class JavadocSnippet extends JavadocDescriptionElement {
+    
     private String text;
 
     public JavadocSnippet() {
         this(null, "");
     }
 
+    @AllFieldsConstructor
+    public JavadocSnippet(String text) {
+        this(null, text);
+    }
+    
     public JavadocSnippet(TokenRange tokenRange, String text) {
         super(tokenRange);
         setText(text);
@@ -60,13 +67,22 @@ public class JavadocSnippet extends JavadocDescriptionElement {
     }
 
     /**
+     * Get string text of snippet
+     * 
+     * @return string text 
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
      * Return the text content of the the snippet.
      * 
      * @return string content
      */
     public String toText() {
         return text;
-    }
+    }    
 
     @Override
     public <R, A> R accept(GenericVisitor<R, A> v, A arg) {
