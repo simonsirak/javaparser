@@ -51,6 +51,8 @@ PARSER_BEGIN(GeneratedJavaParser)
 package com.github.javaparser;
 import java.io.*;
 import java.util.*;
+import com.github.javadocparser.*;
+
 import com.github.javaparser.ast.*;
 import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.comments.*;
@@ -162,7 +164,24 @@ TOKEN_MGR_DECLS :
                 homeToken = token.javaToken;
             }
 
-            if(TokenTypes.isComment(token.kind)) {
+            if(token.kind == JAVADOC_COMMENT){
+              JavadocComment comment = (JavadocComment) createCommentFromToken(token);
+
+              try {
+                InputStream stream = new ByteArrayInputStream(token.image.getBytes("UTF-8"));
+                GeneratedJavaDocParser jdp = new GeneratedJavaDocParser(stream, "UTF-8");
+                try {
+                  comment.setContentNode(jdp.parse());
+                } catch(com.github.javadocparser.ParseException e) {
+                  e.printStackTrace();
+                }
+              } catch(java.io.UnsupportedEncodingException e) {
+                e.printStackTrace();
+                System.exit(1);
+              }
+
+              commentsCollection.addComment(comment);
+            } else if(TokenTypes.isComment(token.kind)) {
                 Comment comment = createCommentFromToken(token);
                 commentsCollection.addComment(comment);
             }
@@ -179,35 +198,9 @@ SPECIAL_TOKEN :
 
 MORE :
 {
-  <ENTER_JAVADOC_COMMENT: "/**" ~["/"]> { input_stream.backup(1); } : JAVADOC_LINE
+  <ENTER_JAVADOC_COMMENT: "/**" ~["/"]> { input_stream.backup(1); } : IN_JAVADOC_COMMENT
 |
   <ENTER_MULTILINE_COMMENT: "/*"> : IN_MULTI_LINE_COMMENT
-}
-
-<JAVADOC_LINE>
-MORE:
-{
-  <JAVADOC_LINE_CONTENT: (<STAR> | <TAG> | <TEXT> | <HTMLTAG> | <SPACE> | <WINDOWS_EOL> | <UNIX_EOL> | <OLD_MAC_EOL>)*> : IN_JAVADOC_COMMENT
-  | <#TEXT: (["a"-"z", "A"-"Z", "0"-"9", ".", ",", ":", "/", "_", "(", ")", "{", "}", "#", "=", "-"])+ >
-  | <#TAG:
-      "@author"
-      | "@version"
-      | "@since"
-      | "@see"
-      | "@param"
-      | "@return"
-      | "@exception"
-      | "@throws"
-      | "@deprecated"
-      | "@InheritDoc"
-      | "@link"
-      | "@value"
-      | "@" <TEXT>
-    >
-  | <#HTMLTAG:
-      "<" <TEXT> ">" (<TEXT>) "</" <TEXT> ">"
-      | "<" <TEXT> "/>"
-    >
 }
 
 <IN_JAVADOC_COMMENT>
@@ -222,7 +215,7 @@ SPECIAL_TOKEN :
   <MULTI_LINE_COMMENT: "*/" > : DEFAULT
 }
 
-<IN_MULTI_LINE_COMMENT>
+<IN_JAVADOC_COMMENT, IN_MULTI_LINE_COMMENT>
 MORE :
 {
   <COMMENT_CONTENT: ~[] >

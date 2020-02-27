@@ -1,14 +1,17 @@
 options {
+  LOOKAHEAD=2;
   STATIC=false;
   JDK_VERSION = "1.8";
 }
 
 PARSER_BEGIN(GeneratedJavaDocParser)
+package com.github.javadocparser;
+import com.github.javaparser.ast.comments.*;
 
-class GeneratedJavaDocParser {
-    public static void main(String args[]) throws ParseException {
-      GeneratedJavaDocParser parser = new GeneratedJavaDocParser(System.in);
-      parser.Start();
+public class GeneratedJavaDocParser {
+    public JavadocContent parse() throws ParseException {
+      JavadocContent content = Start();
+      return new JavadocContent();
     }
 }
 
@@ -29,7 +32,7 @@ TOKEN:
 {
   <STAR: "*">
 | <SLASH: "/">
-| <TEXT: (["a"-"z", "A"-"Z", "0"-"9", ".", ",", ":", "_", "(", ")", "{", "}", "#", "=", "-"])+ >
+| <TEXT: (~["@", "/", "*"])+ >
 | <TAG:
     "@author"
   | "@version"
@@ -54,38 +57,25 @@ TOKEN :
   <END_JAVADOC_COMMENT: "*/" >
 }
 
-void Start():
-{}
+JavadocContent Start():
+{JavadocContent res = new JavadocContent();}
 {
-  <ENTER_JAVADOC_COMMENT> JavaDocLine()
-  { System.out.println("Success parse Javadoc"); }
+  <ENTER_JAVADOC_COMMENT> JavaDocLine(res)
+  { 
+    return res;
+  }
 }
 
-void JavaDocLine():
+void JavaDocLine(JavadocContent res):
 {}
 {
-  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead()) ContinueComment() <END_JAVADOC_COMMENT>
+  (<STAR> | <TAG> | <TEXT> | <SLASH>) ContinueComment(res) <END_JAVADOC_COMMENT>
   |
   <END_JAVADOC_COMMENT>
 }
 
-void ContinueComment():
+void ContinueComment(JavadocContent res):
 {}
 {
-  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead())*
-}
-
-void HtmlTagHead():
-{}
-{
-  "<" HtmlTag()
-}
-
-void HtmlTag():
-{}
-{
-  LOOKAHEAD(2)
-  <TEXT> ">" (<TEXT> | <SLASH> | HtmlTagHead())* "</" <TEXT> ">"
-  | 
-  <TEXT> "/>"
+  (<STAR> | <TAG> | <TEXT> | <SLASH>)*
 }
