@@ -30,7 +30,7 @@ import com.github.javaparser.ast.body.AnnotationDeclaration;
 import com.github.javaparser.ast.body.EnumConstantDeclaration;
 import com.github.javaparser.ast.body.EnumDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.comments.JavadocComment;
+import com.github.javaparser.ast.comments.*;
 import com.github.javaparser.ast.expr.*;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.ast.stmt.BlockStmt;
@@ -49,6 +49,7 @@ import static com.github.javaparser.TokenTypes.eolTokenKind;
 import static com.github.javaparser.TokenTypes.spaceTokenKind;
 import static com.github.javaparser.ast.Modifier.Keyword.PUBLIC;
 import static com.github.javaparser.ast.Modifier.createModifierList;
+import static com.github.javaparser.utils.Utils.EOL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -211,7 +212,11 @@ class LexicalDifferenceCalculatorTest extends AbstractLexicalPreservingTest {
         considerExample("AnnotationDeclaration_Example3_original");
         AnnotationDeclaration annotationDeclaration = (AnnotationDeclaration)cu.getType(0);
         CsmElement element = ConcreteSyntaxModel.forClass(annotationDeclaration.getClass());
-        JavadocComment comment = new JavadocComment("Cool this annotation!");
+
+        JavadocSnippet snippet = new JavadocSnippet("Cool this annotation!");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+        JavadocComment comment = new JavadocComment(null, description, new NodeList<JavadocBlockTag>());
+
         LexicalDifferenceCalculator.CalculatedSyntaxModel csm = new LexicalDifferenceCalculator().calculatedSyntaxModelAfterPropertyChange(element, annotationDeclaration, ObservableProperty.COMMENT, null, comment);
         csm.removeIndentationElements();
         int i = 0;

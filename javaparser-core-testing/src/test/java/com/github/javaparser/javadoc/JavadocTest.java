@@ -61,25 +61,6 @@ class JavadocTest {
     }
 
     @Test
-    void toCommentForEmptyJavadoc() {
-        Javadoc javadoc = new Javadoc(new JavadocDescription());
-        assertEquals(new JavadocComment("" + EOL + "\t\t "), javadoc.toComment("\t\t"));
-    }
-
-    @Test
-    void toCommentorJavadocWithTwoLinesOfJustDescription() {
-        Javadoc javadoc = new Javadoc(JavadocDescription.parseText("first line" + EOL + "second line"));
-        assertEquals(new JavadocComment("" + EOL + "\t\t * first line" + EOL + "\t\t * second line" + EOL + "\t\t "), javadoc.toComment("\t\t"));
-    }
-
-    @Test
-    void toCommentForJavadocWithTwoLinesOfJustDescriptionAndOneBlockTag() {
-        Javadoc javadoc = new Javadoc(JavadocDescription.parseText("first line" + EOL + "second line"));
-        javadoc.addBlockTag("foo", "something useful");
-        assertEquals(new JavadocComment("" + EOL + "\t\t * first line" + EOL + "\t\t * second line" + EOL + "\t\t * " + EOL + "\t\t * @foo something useful" + EOL + "\t\t "), javadoc.toComment("\t\t"));
-    }
-
-    @Test
     void descriptionAndBlockTagsAreRetrievable() {
         Javadoc javadoc = parseJavadoc("first line" + EOL + "second line" + EOL + EOL + "@param node a node" + EOL + "@return result the result");
         assertEquals("first line" + EOL + "second line", javadoc.getDescription().toText());

@@ -27,7 +27,7 @@ import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.PackageDeclaration;
 import com.github.javaparser.ast.body.*;
-import com.github.javaparser.ast.comments.JavadocComment;
+import com.github.javaparser.ast.comments.*;
 import com.github.javaparser.ast.expr.*;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
@@ -192,7 +192,11 @@ class DifferenceElementCalculatorTest extends AbstractLexicalPreservingTest {
         considerExample("AnnotationDeclaration_Example3_original");
         AnnotationDeclaration annotationDeclaration = (AnnotationDeclaration)cu.getType(0);
         CsmElement element = ConcreteSyntaxModel.forClass(annotationDeclaration.getClass());
-        JavadocComment comment = new JavadocComment("Cool this annotation!");
+
+        JavadocSnippet snippet = new JavadocSnippet("Cool this annotation!");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+        JavadocComment comment = new JavadocComment(null, description, new NodeList<JavadocBlockTag>());
+
         LexicalDifferenceCalculator.CalculatedSyntaxModel csmOriginal = new LexicalDifferenceCalculator().calculatedSyntaxModelForNode(element, annotationDeclaration);
         LexicalDifferenceCalculator.CalculatedSyntaxModel csmChanged = new LexicalDifferenceCalculator().calculatedSyntaxModelAfterPropertyChange(element, annotationDeclaration, ObservableProperty.COMMENT, null, comment);
         List<DifferenceElement> differenceElements = DifferenceElementCalculator.calculate(csmOriginal, csmChanged);

@@ -52,7 +52,7 @@ class NodeWithJavadocTest {
     void removeJavaDocPositiveCase() {
         ClassOrInterfaceDeclaration decl = new ClassOrInterfaceDeclaration(new NodeList<>(),
                 false, "Foo");
-        decl.setComment(new JavadocComment("A comment"));
+        decl.setComment(new JavadocComment());
         assertTrue(decl.removeJavaDocComment());
         assertFalse(decl.getComment().isPresent());
     }

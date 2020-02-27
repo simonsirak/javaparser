@@ -35,6 +35,7 @@ import java.util.function.Consumer;
 import java.util.Optional;
 import com.github.javaparser.ast.Generated;
 import static com.github.javaparser.StaticJavaParser.parseJavadoc;
+import static com.github.javaparser.utils.Utils.EOL;
 
 /**
  * A Javadoc comment. <code>/&#42;&#42; a comment &#42;/</code>
@@ -116,6 +117,27 @@ public class JavadocComment extends Comment {
      */
     public NodeList<JavadocBlockTag> getBlockTags() {
         return blockTags;
+    }
+
+    /**
+     * Return the text content of the document. It does not contain trailing spaces or asterisks
+     * at the start of the line.
+     */
+    public String toText() {
+        // TODO: NOT FINISHED
+        StringBuilder sb = new StringBuilder();
+        if (!description.toText().isEmpty()) {
+            sb.append(description.toText());
+            sb.append(EOL);
+        }
+        if (!blockTags.isEmpty()) {
+            sb.append(EOL);
+        }
+        blockTags.forEach(bt -> {
+            sb.append(bt.toText());
+            sb.append(EOL);
+        });
+        return sb.toString();
     }
 
     @Override

@@ -22,8 +22,8 @@
 package com.github.javaparser.ast.nodeTypes;
 
 import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.comments.Comment;
-import com.github.javaparser.ast.comments.JavadocComment;
+import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.comments.*;
 import com.github.javaparser.javadoc.Javadoc;
 
 import java.util.Optional;
@@ -64,7 +64,11 @@ public interface NodeWithJavadoc<N extends Node> {
      */
     @SuppressWarnings("unchecked")
     default N setJavadocComment(String comment) {
-        return setJavadocComment(new JavadocComment(comment));
+        JavadocSnippet snippet =  new JavadocSnippet(comment);
+        NodeList<JavadocDescriptionElement> elements = new NodeList<JavadocDescriptionElement>();
+        elements.add(snippet);
+        JavadocDescription description = new JavadocDescription(elements);
+        return setJavadocComment(new JavadocComment(description, new NodeList<JavadocBlockTag>()));
     }
 
     default N setJavadocComment(JavadocComment comment) {

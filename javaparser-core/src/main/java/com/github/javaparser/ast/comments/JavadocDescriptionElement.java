@@ -21,6 +21,7 @@
 package com.github.javaparser.ast.comments;
 
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
 
 /**
@@ -29,6 +30,12 @@ import com.github.javaparser.ast.Node;
  * @author Simon Sirak & David Johansson
  */
 public abstract class JavadocDescriptionElement extends Node  {
+
+    @AllFieldsConstructor
+    public JavadocDescriptionElement() {
+      super(null);
+    }
+
     /**
      * Return the text content of the the description element.
      * 

@@ -24,10 +24,8 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.comments.JavadocDescriptionElement;
-import com.github.javaparser.javadoc.description.JavadocInlineTag;
-import com.github.javaparser.javadoc.description.JavadocSnippet;
-import org.junit.jupiter.api.Test;
 import com.github.javaparser.javadoc.Javadoc;
+import org.junit.jupiter.api.Test;
 
 import static com.github.javaparser.StaticJavaParser.parseJavadoc;
 import static com.github.javaparser.javadoc.description.JavadocInlineTag.Type.*;
@@ -60,25 +58,48 @@ class JavadocTest {
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescription() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocContent javadoc = new JavadocContent(null, description, new NodeList<JavadocBlockTag>());
+        JavadocSnippet snippet = new JavadocSnippet("first line" + EOL + "second line");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+        JavadocComment javadoc = new JavadocComment(description, new NodeList<JavadocBlockTag>());
         assertEquals("first line" + EOL + "second line" + EOL, javadoc.toText());
     }
 
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescriptionAndOneBlockTag() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocDescription tagDescription = new JavadocDescription(null, "something useful", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocBlockTag tag = new JavadocBlockTag(null, tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
+        JavadocSnippet snippet = new JavadocSnippet("first line" + EOL + "second line");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+
+        JavadocSnippet snippet2 = new JavadocSnippet("something useful");
+        NodeList<JavadocDescriptionElement> elements2 = new NodeList<JavadocDescriptionElement>().addFirst(snippet2);
+
+        JavadocDescription tagDescription = new JavadocDescription(elements2);
+        JavadocBlockTag tag = new JavadocBlockTag(tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
 
         NodeList<JavadocBlockTag> tags = new NodeList<JavadocBlockTag>().addLast(tag);
-        JavadocContent javadoc = new JavadocContent(null, description, tags);
+        JavadocComment javadoc = new JavadocComment(null, description, tags);
         assertEquals("first line" + EOL + "second line" + EOL + EOL + "@author something useful" + EOL, javadoc.toText());
     }
+
+
+//    @Test
+//    void toCommentForEmptyJavadoc() {
+//        Javadoc javadoc = new Javadoc(new com.github.javaparser.javadoc.description.JavadocDescription());
+//        assertEquals(new JavadocComment("" + EOL + "\t\t "), javadoc.toComment("\t\t"));
+//    }
+//
+//    @Test
+//    void toCommentorJavadocWithTwoLinesOfJustDescription() {
+//        Javadoc javadoc = new Javadoc(com.github.javaparser.javadoc.description.JavadocDescription.parseText("first line" + EOL + "second line"));
+//        assertEquals(new JavadocComment("" + EOL + "\t\t * first line" + EOL + "\t\t * second line" + EOL + "\t\t "), javadoc.toComment("\t\t"));
+//    }
+//
+//    @Test
+//    void toCommentForJavadocWithTwoLinesOfJustDescriptionAndOneBlockTag() {
+//        Javadoc javadoc = new Javadoc(com.github.javaparser.javadoc.description.JavadocDescription.parseText("first line" + EOL + "second line"));
+//        javadoc.addBlockTag("foo", "something useful");
+//        assertEquals(new JavadocComment("" + EOL + "\t\t * first line" + EOL + "\t\t * second line" + EOL + "\t\t * " + EOL + "\t\t * @foo something useful" + EOL + "\t\t "), javadoc.toComment("\t\t"));
+//    }
 
 //    @Test
 //    void descriptionAndBlockTagsAreRetrievable() {
@@ -141,11 +162,13 @@ class JavadocTest {
     @Test
     void blockTagModificationWorks() {
         // REQ 2
-        JavadocContent javadoc = new JavadocContent(null, new JavadocDescription(), new NodeList<JavadocBlockTag>());
+        JavadocComment javadoc = new JavadocComment(new JavadocDescription(), new NodeList<JavadocBlockTag>());
 
         assertEquals(0, javadoc.getBlockTags().size());
-        JavadocBlockTag blockTag = new JavadocBlockTag(null, new JavadocDescription().setDescription("a value"), JavadocBlockTag.BlockTagType.RETURN);
-        javadoc.addBlockTag(blockTag);
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(new JavadocSnippet("a value")));
+        JavadocBlockTag blockTag = new JavadocBlockTag(description, JavadocBlockTag.BlockTagType.RETURN);
+
+        javadoc.getBlockTags().addFirst(blockTag);
 
         assertEquals(1, javadoc.getBlockTags().size());
         assertEquals(blockTag, javadoc.getBlockTags().get(0));

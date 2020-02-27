@@ -114,7 +114,7 @@ public class JavadocInlineTag extends JavadocDescriptionElement {
      * 
      * @return description of tag
      */
-    public String getString() {
+    public String getContent() {
         return content;
     }
 

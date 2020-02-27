@@ -1,0 +1,1163 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] javaparser-parent                                                  [pom]
+[INFO] javaparser-core                                                    [jar]
+[INFO] javaparser-core-testing                                            [jar]
+[INFO] javaparser-core-testing-bdd                                        [jar]
+[INFO] javaparser-core-generators                                         [jar]
+[INFO] javaparser-core-metamodel-generator                                [jar]
+[INFO] javaparser-core-serialization                                      [jar]
+[INFO] javaparser-symbol-solver-model                                     [jar]
+[INFO] javaparser-symbol-solver-logic                                     [jar]
+[INFO] javaparser-symbol-solver-core                                      [jar]
+[INFO] javaparser-symbol-solver-testing                                   [jar]
+[INFO] 
+[INFO] --------------< com.github.javaparser:javaparser-parent >---------------
+[INFO] Building javaparser-parent 3.15.13-SNAPSHOT                       [1/11]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-parent ---
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-parent >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-parent <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-parent ---
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-parent ---
+[INFO] Installing /repo/ssirak/github/javaparser/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-parent/3.15.13-SNAPSHOT/javaparser-parent-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------< com.github.javaparser:javaparser-core >----------------
+[INFO] Building javaparser-core 3.15.13-SNAPSHOT                         [2/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core/target
+[INFO] 
+[INFO] --- ph-javacc-maven-plugin:3.0.0:javacc (javacc) @ javaparser-core ---
+Java Compiler Compiler Version 7.0.3 (Parser Generator)
+(type "javacc" with no arguments for help)
+Reading from file /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc/java.jj . . .
+File "Provider.java" does not exist.  Will create one.
+File "StringProvider.java" does not exist.  Will create one.
+File "StreamProvider.java" does not exist.  Will create one.
+File "TokenMgrException.java" does not exist.  Will create one.
+File "ParseException.java" does not exist.  Will create one.
+File "Token.java" does not exist.  Will create one.
+File "SimpleCharStream.java" does not exist.  Will create one.
+Parser generated with 0 errors and 2 warnings.
+[INFO] Processed 1 grammar
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (add-source) @ javaparser-core ---
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc-support added.
+[INFO] 
+[INFO] --- templating-maven-plugin:1.0.0:filter-sources (filter-src) @ javaparser-core ---
+[INFO] Coping files with filtering to temporary directory.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copied 1 files to output directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates added.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 475 source files to /repo/ssirak/github/javaparser/javaparser-core/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core/src/main/java/com/github/javaparser/ast/body/TypeDeclaration.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core/src/main/java/com/github/javaparser/ast/body/TypeDeclaration.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bnd-maven-plugin:4.1.0:bnd-process (default) @ javaparser-core ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core >>>
+[INFO] 
+[INFO] --- ph-javacc-maven-plugin:3.0.0:javacc (javacc) @ javaparser-core ---
+[INFO] Skipping - all parsers are up to date
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (add-source) @ javaparser-core ---
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc-support added.
+[INFO] 
+[INFO] --- templating-maven-plugin:1.0.0:filter-sources (filter-src) @ javaparser-core ---
+[INFO] Coping files with filtering to temporary directory.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] No files needs to be copied to output directory. Up to date: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates added.
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----------< com.github.javaparser:javaparser-core-testing >------------
+[INFO] Building javaparser-core-testing 3.15.13-SNAPSHOT                 [3/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-testing ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-testing/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-testing/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 89 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-testing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 148 source files to /repo/ssirak/github/javaparser/javaparser-core-testing/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/ast/WalkFindTest.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/ast/WalkFindTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/utils/TestParser.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/utils/TestParser.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-testing ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-testing ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-testing/target/javaparser-core-testing-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-testing >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-testing <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-testing ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-core-testing ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 582 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-testing ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing/target/javaparser-core-testing-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing/3.15.13-SNAPSHOT/javaparser-core-testing-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing/3.15.13-SNAPSHOT/javaparser-core-testing-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------< com.github.javaparser:javaparser-core-testing-bdd >----------
+[INFO] Building javaparser-core-testing-bdd 3.15.13-SNAPSHOT             [4/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-testing-bdd ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing-bdd ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-testing-bdd ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 12 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-testing-bdd ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java: /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java uses unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-testing-bdd ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-testing-bdd ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-testing-bdd >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing-bdd ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-testing-bdd <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-testing-bdd ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-core-testing-bdd ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 582 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-testing-bdd ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing-bdd/3.15.13-SNAPSHOT/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing-bdd/3.15.13-SNAPSHOT/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------< com.github.javaparser:javaparser-core-generators >----------
+[INFO] Building javaparser-core-generators 3.15.13-SNAPSHOT              [5/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-generators ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-generators/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-generators ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-generators/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-generators ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 31 source files to /repo/ssirak/github/javaparser/javaparser-core-generators/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-generators ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-generators/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-generators ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-generators ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-generators ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-generators >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-generators <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-generators ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-generators ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----< com.github.javaparser:javaparser-core-metamodel-generator >------
+[INFO] Building javaparser-core-metamodel-generator 3.15.13-SNAPSHOT     [6/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-metamodel-generator ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-metamodel-generator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-metamodel-generator ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-metamodel-generator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-metamodel-generator >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-metamodel-generator <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-metamodel-generator ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-core-serialization >---------
+[INFO] Building javaparser-core-serialization 3.15.13-SNAPSHOT           [7/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-serialization ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-serialization/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-serialization ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /repo/ssirak/github/javaparser/javaparser-core-serialization/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/java/com/github/javaparser/serialization/JavaParserJsonSerializer.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/java/com/github/javaparser/serialization/JavaParserJsonSerializer.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-serialization ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-serialization/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /repo/ssirak/github/javaparser/javaparser-core-serialization/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-serialization ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-serialization >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-serialization <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-serialization ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-serialization ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-model >--------
+[INFO] Building javaparser-symbol-solver-model 3.15.13-SNAPSHOT          [8/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-model ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-model ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-model ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-model >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-model <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-model ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-model ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-logic >--------
+[INFO] Building javaparser-symbol-solver-logic 3.15.13-SNAPSHOT          [9/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-logic ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-logic ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-logic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-logic ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-logic ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-logic ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-logic ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-logic >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-logic <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-logic ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-logic ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-core >---------
+[INFO] Building javaparser-symbol-solver-core 3.15.13-SNAPSHOT          [10/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-core ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 142 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/javaparsermodel/contexts/CompilationUnitContext.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/javaparsermodel/contexts/CompilationUnitContext.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/resolution/typesolvers/CombinedTypeSolver.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/resolution/typesolvers/CombinedTypeSolver.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-core ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-core >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-core ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -------< com.github.javaparser:javaparser-symbol-solver-testing >-------
+[INFO] Building javaparser-symbol-solver-testing 3.15.13-SNAPSHOT       [11/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-testing ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-symbol-solver-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 201 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-testing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 132 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/Issue343Test.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/Issue343Test.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/resolution/naming/AbstractNameLogicTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/resolution/naming/AbstractNameLogicTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-testing ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-testing ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-testing >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-symbol-solver-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-testing <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-testing ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-symbol-solver-testing ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 582 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-testing ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-testing/3.15.13-SNAPSHOT/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-testing/3.15.13-SNAPSHOT/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for javaparser-parent 3.15.13-SNAPSHOT:
+[INFO] 
+[INFO] javaparser-parent .................................. SUCCESS [  0.433 s]
+[INFO] javaparser-core .................................... SUCCESS [  7.465 s]
+[INFO] javaparser-core-testing ............................ SUCCESS [  1.824 s]
+[INFO] javaparser-core-testing-bdd ........................ SUCCESS [  0.849 s]
+[INFO] javaparser-core-generators ......................... SUCCESS [  0.168 s]
+[INFO] javaparser-core-metamodel-generator ................ SUCCESS [  0.114 s]
+[INFO] javaparser-core-serialization ...................... SUCCESS [  0.091 s]
+[INFO] javaparser-symbol-solver-model ..................... SUCCESS [  0.059 s]
+[INFO] javaparser-symbol-solver-logic ..................... SUCCESS [  0.110 s]
+[INFO] javaparser-symbol-solver-core ...................... SUCCESS [  1.081 s]
+[INFO] javaparser-symbol-solver-testing ................... SUCCESS [  1.664 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.976 s
+[INFO] Finished at: 2020-02-27T12:02:07+01:00
+[INFO] ------------------------------------------------------------------------
+/repo/ssirak/github/javaparser/javaparser-core-metamodel-generator /repo/ssirak/github/javaparser
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----< com.github.javaparser:javaparser-core-metamodel-generator >------
+[INFO] Building javaparser-core-metamodel-generator 3.15.13-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-metamodel-generator ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-metamodel-generator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-metamodel-generator ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-metamodel-generator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:java (generate-javaparser-metamodel) @ javaparser-core-metamodel-generator ---
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-metamodel-generator >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-metamodel-generator <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.214 s
+[INFO] Finished at: 2020-02-27T12:02:10+01:00
+[INFO] ------------------------------------------------------------------------
+/repo/ssirak/github/javaparser
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] javaparser-parent                                                  [pom]
+[INFO] javaparser-core                                                    [jar]
+[INFO] javaparser-core-testing                                            [jar]
+[INFO] javaparser-core-testing-bdd                                        [jar]
+[INFO] javaparser-core-generators                                         [jar]
+[INFO] javaparser-core-metamodel-generator                                [jar]
+[INFO] javaparser-core-serialization                                      [jar]
+[INFO] javaparser-symbol-solver-model                                     [jar]
+[INFO] javaparser-symbol-solver-logic                                     [jar]
+[INFO] javaparser-symbol-solver-core                                      [jar]
+[INFO] javaparser-symbol-solver-testing                                   [jar]
+[INFO] 
+[INFO] --------------< com.github.javaparser:javaparser-parent >---------------
+[INFO] Building javaparser-parent 3.15.13-SNAPSHOT                       [1/11]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-parent ---
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-parent >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-parent <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-parent ---
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-parent ---
+[INFO] Installing /repo/ssirak/github/javaparser/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-parent/3.15.13-SNAPSHOT/javaparser-parent-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------< com.github.javaparser:javaparser-core >----------------
+[INFO] Building javaparser-core 3.15.13-SNAPSHOT                         [2/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core/target
+[INFO] 
+[INFO] --- ph-javacc-maven-plugin:3.0.0:javacc (javacc) @ javaparser-core ---
+Java Compiler Compiler Version 7.0.3 (Parser Generator)
+(type "javacc" with no arguments for help)
+Reading from file /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc/java.jj . . .
+File "Provider.java" does not exist.  Will create one.
+File "StringProvider.java" does not exist.  Will create one.
+File "StreamProvider.java" does not exist.  Will create one.
+File "TokenMgrException.java" does not exist.  Will create one.
+File "ParseException.java" does not exist.  Will create one.
+File "Token.java" does not exist.  Will create one.
+File "SimpleCharStream.java" does not exist.  Will create one.
+Parser generated with 0 errors and 2 warnings.
+[INFO] Processed 1 grammar
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (add-source) @ javaparser-core ---
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc-support added.
+[INFO] 
+[INFO] --- templating-maven-plugin:1.0.0:filter-sources (filter-src) @ javaparser-core ---
+[INFO] Coping files with filtering to temporary directory.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copied 1 files to output directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates added.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 480 source files to /repo/ssirak/github/javaparser/javaparser-core/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core/src/main/java/com/github/javaparser/ast/body/TypeDeclaration.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core/src/main/java/com/github/javaparser/ast/body/TypeDeclaration.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bnd-maven-plugin:4.1.0:bnd-process (default) @ javaparser-core ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core >>>
+[INFO] 
+[INFO] --- ph-javacc-maven-plugin:3.0.0:javacc (javacc) @ javaparser-core ---
+[INFO] Skipping - all parsers are up to date
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (add-source) @ javaparser-core ---
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/src/main/javacc-support added.
+[INFO] 
+[INFO] --- templating-maven-plugin:1.0.0:filter-sources (filter-src) @ javaparser-core ---
+[INFO] Coping files with filtering to temporary directory.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] No files needs to be copied to output directory. Up to date: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates
+[INFO] Source directory: /repo/ssirak/github/javaparser/javaparser-core/target/generated-sources/java-templates added.
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core/target/javaparser-core-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core/3.15.13-SNAPSHOT/javaparser-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----------< com.github.javaparser:javaparser-core-testing >------------
+[INFO] Building javaparser-core-testing 3.15.13-SNAPSHOT                 [3/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-testing ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-testing/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-testing/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 89 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-testing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 148 source files to /repo/ssirak/github/javaparser/javaparser-core-testing/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/ast/WalkFindTest.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/ast/WalkFindTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/utils/TestParser.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing/src/test/java/com/github/javaparser/utils/TestParser.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-testing ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-testing ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-testing/target/javaparser-core-testing-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-testing >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-testing <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-testing ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-core-testing ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-core-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 587 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-testing ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing/target/javaparser-core-testing-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing/3.15.13-SNAPSHOT/javaparser-core-testing-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing/3.15.13-SNAPSHOT/javaparser-core-testing-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------< com.github.javaparser:javaparser-core-testing-bdd >----------
+[INFO] Building javaparser-core-testing-bdd 3.15.13-SNAPSHOT             [4/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-testing-bdd ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing-bdd ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-testing-bdd ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 12 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-testing-bdd ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java: /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java uses unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/src/test/java/com/github/javaparser/steps/SharedSteps.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-testing-bdd ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-testing-bdd ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-testing-bdd >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-core-testing-bdd ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-testing-bdd <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-testing-bdd ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-core-testing-bdd ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-core-testing-bdd ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 587 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-testing-bdd ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/target/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing-bdd/3.15.13-SNAPSHOT/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-testing-bdd/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-testing-bdd/3.15.13-SNAPSHOT/javaparser-core-testing-bdd-3.15.13-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------< com.github.javaparser:javaparser-core-generators >----------
+[INFO] Building javaparser-core-generators 3.15.13-SNAPSHOT              [5/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-generators ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-generators/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-generators ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-generators/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-generators ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 31 source files to /repo/ssirak/github/javaparser/javaparser-core-generators/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-generators ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-generators/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-generators ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-generators ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-generators ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-generators >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-generators <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-generators ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-generators ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-generators/target/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-generators/3.15.13-SNAPSHOT/javaparser-core-generators-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----< com.github.javaparser:javaparser-core-metamodel-generator >------
+[INFO] Building javaparser-core-metamodel-generator 3.15.13-SNAPSHOT     [6/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-metamodel-generator ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-metamodel-generator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-metamodel-generator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-metamodel-generator ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-metamodel-generator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-metamodel-generator >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-metamodel-generator <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-metamodel-generator ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-metamodel-generator ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-metamodel-generator/target/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-metamodel-generator/3.15.13-SNAPSHOT/javaparser-core-metamodel-generator-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-core-serialization >---------
+[INFO] Building javaparser-core-serialization 3.15.13-SNAPSHOT           [7/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-core-serialization ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-core-serialization/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-core-serialization ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-core-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /repo/ssirak/github/javaparser/javaparser-core-serialization/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/java/com/github/javaparser/serialization/JavaParserJsonSerializer.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-core-serialization/src/main/java/com/github/javaparser/serialization/JavaParserJsonSerializer.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-core-serialization ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-core-serialization/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-core-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /repo/ssirak/github/javaparser/javaparser-core-serialization/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-core-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-core-serialization ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-core-serialization >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-core-serialization <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-core-serialization ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-core-serialization ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-core-serialization/target/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-core-serialization/3.15.13-SNAPSHOT/javaparser-core-serialization-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-model >--------
+[INFO] Building javaparser-symbol-solver-model 3.15.13-SNAPSHOT          [8/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-model ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-model ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-model ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-model >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-model <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-model ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-model ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-model/target/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-model/3.15.13-SNAPSHOT/javaparser-symbol-solver-model-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-logic >--------
+[INFO] Building javaparser-symbol-solver-logic 3.15.13-SNAPSHOT          [9/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-logic ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-logic ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-logic ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-logic ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-logic ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-logic ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-logic ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-logic >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-logic <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-logic ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-logic ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-logic/target/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-logic/3.15.13-SNAPSHOT/javaparser-symbol-solver-logic-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------< com.github.javaparser:javaparser-symbol-solver-core >---------
+[INFO] Building javaparser-symbol-solver-core 3.15.13-SNAPSHOT          [10/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-core ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 142 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/javaparsermodel/contexts/CompilationUnitContext.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/javaparsermodel/contexts/CompilationUnitContext.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/resolution/typesolvers/CombinedTypeSolver.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/main/java/com/github/javaparser/symbolsolver/resolution/typesolvers/CombinedTypeSolver.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-core ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-core >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-core ---
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-core ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT.pom
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-core/target/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-core/3.15.13-SNAPSHOT/javaparser-symbol-solver-core-3.15.13-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -------< com.github.javaparser:javaparser-symbol-solver-testing >-------
+[INFO] Building javaparser-symbol-solver-testing 3.15.13-SNAPSHOT       [11/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ javaparser-symbol-solver-testing ---
+[INFO] Deleting /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-symbol-solver-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javaparser-symbol-solver-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 201 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javaparser-symbol-solver-testing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 132 source files to /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/test-classes
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/Issue343Test.java: Some input files use or override a deprecated API.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/Issue343Test.java: Recompile with -Xlint:deprecation for details.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/resolution/naming/AbstractNameLogicTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/src/test/java/com/github/javaparser/symbolsolver/resolution/naming/AbstractNameLogicTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M1:test (default-test) @ javaparser-symbol-solver-testing ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.0:jar (default-jar) @ javaparser-symbol-solver-testing ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (attach-sources) > generate-sources @ javaparser-symbol-solver-testing >>>
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (jacoco-initialize) @ javaparser-symbol-solver-testing ---
+[INFO] argLine set to -javaagent:/home/ssirak/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/jacoco.exec
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (attach-sources) < generate-sources @ javaparser-symbol-solver-testing <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (attach-sources) @ javaparser-symbol-solver-testing ---
+[INFO] No sources in project. Archive not created.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:report (jacoco-site) @ javaparser-symbol-solver-testing ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-resources) @ javaparser-symbol-solver-testing ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 587 resources
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ javaparser-symbol-solver-testing ---
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/target/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-testing/3.15.13-SNAPSHOT/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.jar
+[INFO] Installing /repo/ssirak/github/javaparser/javaparser-symbol-solver-testing/pom.xml to /home/ssirak/.m2/repository/com/github/javaparser/javaparser-symbol-solver-testing/3.15.13-SNAPSHOT/javaparser-symbol-solver-testing-3.15.13-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for javaparser-parent 3.15.13-SNAPSHOT:
+[INFO] 
+[INFO] javaparser-parent .................................. SUCCESS [  0.388 s]
+[INFO] javaparser-core .................................... SUCCESS [  8.009 s]
+[INFO] javaparser-core-testing ............................ SUCCESS [  2.076 s]
+[INFO] javaparser-core-testing-bdd ........................ SUCCESS [  0.845 s]
+[INFO] javaparser-core-generators ......................... SUCCESS [  0.158 s]
+[INFO] javaparser-core-metamodel-generator ................ SUCCESS [  0.101 s]
+[INFO] javaparser-core-serialization ...................... SUCCESS [  0.110 s]
+[INFO] javaparser-symbol-solver-model ..................... SUCCESS [  0.069 s]
+[INFO] javaparser-symbol-solver-logic ..................... SUCCESS [  0.082 s]
+[INFO] javaparser-symbol-solver-core ...................... SUCCESS [  0.969 s]
+[INFO] javaparser-symbol-solver-testing ................... SUCCESS [  1.674 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.604 s
+[INFO] Finished at: 2020-02-27T12:02:26+01:00
+[INFO] ------------------------------------------------------------------------
