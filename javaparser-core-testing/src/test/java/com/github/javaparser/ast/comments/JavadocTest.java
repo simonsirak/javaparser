@@ -24,16 +24,9 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.comments.JavadocDescriptionElement;
-import com.github.javaparser.javadoc.description.JavadocInlineTag;
-import com.github.javaparser.javadoc.description.JavadocSnippet;
 import org.junit.jupiter.api.Test;
-import com.github.javaparser.javadoc.Javadoc;
 
-import static com.github.javaparser.StaticJavaParser.parseJavadoc;
-import static com.github.javaparser.javadoc.description.JavadocInlineTag.Type.*;
-import static com.github.javaparser.javadoc.description.JavadocInlineTag.Type.LINK;
 import static com.github.javaparser.utils.Utils.EOL;
-import static com.github.javaparser.StaticJavaParser.parse;
 import com.github.javaparser.printer.PrettyPrinterConfiguration;
 
 import java.util.List;
@@ -60,20 +53,24 @@ class JavadocTest {
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescription() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocContent javadoc = new JavadocContent(null, description, new NodeList<JavadocBlockTag>());
+        JavadocSnippet snippet = new JavadocSnippet("first line" + EOL + "second line");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+        assertEquals("first line" + EOL + "second line", description.toText());
+        JavadocContent javadoc = new JavadocContent(description, new NodeList<JavadocBlockTag>());
         assertEquals("first line" + EOL + "second line" + EOL, javadoc.toText());
     }
 
     @Test
     void toTextForJavadocWithTwoLinesOfJustDescriptionAndOneBlockTag() {
         // REQ 2
-        JavadocDescription description = new JavadocDescription(null, "first line" + EOL + "second line", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocDescription tagDescription = new JavadocDescription(null, "something useful", 
-            new NodeList<JavadocDescriptionElement>());
-        JavadocBlockTag tag = new JavadocBlockTag(null, tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
+        JavadocSnippet snippet = new JavadocSnippet("first line" + EOL + "second line");
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
+
+        JavadocSnippet snippet2 = new JavadocSnippet("something useful");
+        NodeList<JavadocDescriptionElement> elements2 = new NodeList<JavadocDescriptionElement>().addFirst(snippet2);
+
+        JavadocDescription tagDescription = new JavadocDescription(elements2);
+        JavadocBlockTag tag = new JavadocBlockTag(tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
 
         NodeList<JavadocBlockTag> tags = new NodeList<JavadocBlockTag>().addLast(tag);
         JavadocContent javadoc = new JavadocContent(null, description, tags);
@@ -141,11 +138,13 @@ class JavadocTest {
     @Test
     void blockTagModificationWorks() {
         // REQ 2
-        JavadocContent javadoc = new JavadocContent(null, new JavadocDescription(), new NodeList<JavadocBlockTag>());
+        JavadocContent javadoc = new JavadocContent(new JavadocDescription(), new NodeList<JavadocBlockTag>());
 
         assertEquals(0, javadoc.getBlockTags().size());
-        JavadocBlockTag blockTag = new JavadocBlockTag(null, new JavadocDescription().setDescription("a value"), JavadocBlockTag.BlockTagType.RETURN);
-        javadoc.addBlockTag(blockTag);
+        JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(new JavadocSnippet("a value")));
+        JavadocBlockTag blockTag = new JavadocBlockTag(description, JavadocBlockTag.BlockTagType.RETURN);
+
+        javadoc.getBlockTags().addFirst(blockTag);
 
         assertEquals(1, javadoc.getBlockTags().size());
         assertEquals(blockTag, javadoc.getBlockTags().get(0));
@@ -153,7 +152,6 @@ class JavadocTest {
         assertEquals(blockTag, javadoc.getBlockTags().remove(0));
         assertEquals(0, javadoc.getBlockTags().size());
     }
-
     // TODO: Add when inline tags are added
 //    @Test
 //    void descriptionModificationWorks() {

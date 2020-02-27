@@ -21,6 +21,7 @@
 package com.github.javaparser.ast.comments;
 
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -34,39 +35,27 @@ import static com.github.javaparser.utils.Utils.assertNotNull;
  * @author Simon Sirak & David Johansson
  */
 public class JavadocDescription extends Node {
-    private String description; 
-    private NodeList<JavadocDescriptionElement> elements;   
+    private NodeList<JavadocDescriptionElement> elements;
 
     public JavadocDescription() {
-        this(null, "", new NodeList<JavadocDescriptionElement>());
+        this(new NodeList<JavadocDescriptionElement>());
     }
 
-    public JavadocDescription(TokenRange tokenRange, String content, NodeList<JavadocDescriptionElement> elements){
-        super(tokenRange);
-        setDescription(content);
+    @AllFieldsConstructor
+    public JavadocDescription(NodeList<JavadocDescriptionElement> elements){
+        super(null);
         setElements(elements);
     }
 
-    /**
-     * Set description of current node.
-     * 
-     * @param description string description 
-     * @return new version of current object
-     */
-    public JavadocDescription setDescription(final String description) {
-        assertNotNull(description);
-        if (description == this.description) {
-            return (JavadocDescription) this;
-        }
-        notifyPropertyChange(ObservableProperty.CONTENT, this.description, description);
-        this.description = description;
-        return this;
+    public JavadocDescription(TokenRange tokenRange, NodeList<JavadocDescriptionElement> elements){
+        super(tokenRange);
+        setElements(elements);
     }
 
     // TODO: NOT FINISHED
     public String toText() {
-        StringBuilder sb = new StringBuilder().append(description);
-        //elements.forEach(e -> sb.append(e.toText()));
+        StringBuilder sb = new StringBuilder();
+        elements.forEach(e -> sb.append(e.toText()));
         return sb.toString();
     }
 
@@ -87,6 +76,10 @@ public class JavadocDescription extends Node {
         this.elements = elements;
         setAsParentNodeOf(elements);
         return this;
+    }
+
+    public NodeList<JavadocDescriptionElement> getElements() {
+        return elements;
     }
 
     @Override

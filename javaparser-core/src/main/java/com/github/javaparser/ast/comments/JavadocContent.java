@@ -21,6 +21,7 @@
 package com.github.javaparser.ast.comments;
 
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Generated;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
@@ -35,7 +36,7 @@ import static com.github.javaparser.utils.Utils.EOL;
  * 
  * @author Simon Sirak
  */
-public class JavadocContent extends Node {
+public class JavadocContent extends Comment {
 
     private JavadocDescription description;
     private NodeList<JavadocBlockTag> blockTags;
@@ -44,19 +45,24 @@ public class JavadocContent extends Node {
         this(null, new JavadocDescription(), new NodeList<JavadocBlockTag>());
     }
 
+    @AllFieldsConstructor
+    public JavadocContent(JavadocDescription description, NodeList<JavadocBlockTag> blockTags) {
+        this(null, description, blockTags);
+    }
+
     /**
      * This constructor is used by the parser and is considered private.
      */
     @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
     public JavadocContent(TokenRange tokenRange, JavadocDescription description, NodeList<JavadocBlockTag> blockTags) {
-        super(tokenRange);
+        super(tokenRange, "");
         setDescription(description);
         setBlockTags(blockTags);
         customInitialization();
     }
 
     protected JavadocContent(TokenRange tokenRange) {
-        super(tokenRange);
+        super(tokenRange, "");
     }
 
     public JavadocContent setDescription(JavadocDescription description) {
@@ -113,6 +119,7 @@ public class JavadocContent extends Node {
         // TODO: NOT FINISHED
         StringBuilder sb = new StringBuilder();
         if (!description.toText().isEmpty()) {
+            System.out.println("rtaTRJAVSDLHTR SDRY");
             sb.append(description.toText());
             sb.append(EOL);
         }

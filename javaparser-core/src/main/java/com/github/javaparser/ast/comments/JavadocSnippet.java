@@ -38,6 +38,10 @@ public class JavadocSnippet extends JavadocDescriptionElement {
         this(null, "");
     }
 
+    public JavadocSnippet(String text) {
+        this(null, text);
+    }
+
     public JavadocSnippet(TokenRange tokenRange, String text) {
         super(tokenRange);
         setText(text);
@@ -46,7 +50,7 @@ public class JavadocSnippet extends JavadocDescriptionElement {
     /**
      * Set text of current node.
      * 
-     * @param description string text 
+     * @param text string text
      * @return new version of current object
      */
     public JavadocSnippet setText(String text) {
@@ -65,6 +69,15 @@ public class JavadocSnippet extends JavadocDescriptionElement {
      * @return string content
      */
     public String toText() {
+        return text;
+    }
+
+    /**
+     * Return the text content of the the snippet.
+     *
+     * @return string content
+     */
+    public String getText() {
         return text;
     }
 

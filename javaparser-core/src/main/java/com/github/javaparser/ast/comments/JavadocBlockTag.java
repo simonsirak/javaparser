@@ -21,6 +21,7 @@
 package com.github.javaparser.ast.comments;
 
 import com.github.javaparser.TokenRange;
+import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -60,6 +61,15 @@ public class JavadocBlockTag extends Node {
         super(tokenRange);
         setDescription(description);
         setType(type);
+    }
+
+    public JavadocBlockTag() {
+        this(null, new JavadocDescription(), BlockTagType.UNKNOWN);
+    }
+
+    @AllFieldsConstructor
+    public JavadocBlockTag(JavadocDescription description, BlockTagType type) {
+        this(null, description, type);
     }
 
     // TODO: Use optional instead of null check ?
@@ -106,6 +116,24 @@ public class JavadocBlockTag extends Node {
         notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.type, type);
         this.type = type;        
         return this;
+    }
+
+    /**
+     * Gets the description associated with the tag.
+     *
+     * @return tag description
+     */
+    public JavadocDescription getDescription() {
+        return description;
+    }
+
+    /**
+     * Gets the type associated with the tag.
+     *
+     * @return tag type
+     */
+    public BlockTagType getType() {
+        return type;
     }
 
     @Override
