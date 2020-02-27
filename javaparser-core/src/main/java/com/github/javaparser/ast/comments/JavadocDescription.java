@@ -28,13 +28,18 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.observer.ObservableProperty;
 import static com.github.javaparser.utils.Utils.assertNotNull;
+import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.metamodel.JavadocDescriptionMetaModel;
+import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.ast.Generated;
 
 /**
  * A JavaDoc description.
- * 
+ *
  * @author Simon Sirak & David Johansson
  */
 public class JavadocDescription extends Node {
+
     private NodeList<JavadocDescriptionElement> elements;
 
     public JavadocDescription() {
@@ -42,14 +47,19 @@ public class JavadocDescription extends Node {
     }
 
     @AllFieldsConstructor
-    public JavadocDescription(NodeList<JavadocDescriptionElement> elements){
+    public JavadocDescription(NodeList<JavadocDescriptionElement> elements) {
         super(null);
         setElements(elements);
     }
 
-    public JavadocDescription(TokenRange tokenRange, NodeList<JavadocDescriptionElement> elements){
+    /**
+     * This constructor is used by the parser and is considered private.
+     */
+    @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
+    public JavadocDescription(TokenRange tokenRange, NodeList<JavadocDescriptionElement> elements) {
         super(tokenRange);
         setElements(elements);
+        customInitialization();
     }
 
     // TODO: NOT FINISHED
@@ -61,16 +71,17 @@ public class JavadocDescription extends Node {
 
     /**
      * Set elements of current description such as text snippet or inline tags.
-     * 
-     * @param elements list containing all elements 
+     *
+     * @param elements list containing all elements
      * @return new version of current object
      */
-    public JavadocDescription setElements(NodeList<JavadocDescriptionElement> elements) {
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
+    public JavadocDescription setElements(final NodeList<JavadocDescriptionElement> elements) {
         assertNotNull(elements);
         if (elements == this.elements) {
-            return this;
-        }        
-        notifyPropertyChange(ObservableProperty.ANNOTATIONS, this.elements, elements);
+            return (JavadocDescription) this;
+        }
+        notifyPropertyChange(ObservableProperty.ELEMENTS, this.elements, elements);
         if (this.elements != null)
             this.elements.setParentNode(null);
         this.elements = elements;
@@ -78,17 +89,60 @@ public class JavadocDescription extends Node {
         return this;
     }
 
+    @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
     public NodeList<JavadocDescriptionElement> getElements() {
         return elements;
     }
 
     @Override
-    public <R, A> R accept(GenericVisitor<R, A> v, A arg) {
-        return null;
+    @Generated("com.github.javaparser.generator.core.node.AcceptGenerator")
+    public <R, A> R accept(final GenericVisitor<R, A> v, final A arg) {
+        return v.visit(this, arg);
     }
 
     @Override
-    public <A> void accept(VoidVisitor<A> v, A arg) {
+    @Generated("com.github.javaparser.generator.core.node.AcceptGenerator")
+    public <A> void accept(final VoidVisitor<A> v, final A arg) {
+        v.visit(this, arg);
+    }
 
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
+    public boolean remove(Node node) {
+        if (node == null)
+            return false;
+        for (int i = 0; i < elements.size(); i++) {
+            if (elements.get(i) == node) {
+                elements.remove(i);
+                return true;
+            }
+        }
+        return super.remove(node);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.ReplaceMethodGenerator")
+    public boolean replace(Node node, Node replacementNode) {
+        if (node == null)
+            return false;
+        for (int i = 0; i < elements.size(); i++) {
+            if (elements.get(i) == node) {
+                elements.set(i, (JavadocDescriptionElement) replacementNode);
+                return true;
+            }
+        }
+        return super.replace(node, replacementNode);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
+    public JavadocDescription clone() {
+        return (JavadocDescription) accept(new CloneVisitor(), null);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
+    public JavadocDescriptionMetaModel getMetaModel() {
+        return JavaParserMetaModel.javadocDescriptionMetaModel;
     }
 }

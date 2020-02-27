@@ -41,7 +41,6 @@ import static com.github.javaparser.StaticJavaParser.parseJavadoc;
  */
 public class JavadocComment extends Comment {
 
-    
     public JavadocComment() {
         this(null, "empty");
     }

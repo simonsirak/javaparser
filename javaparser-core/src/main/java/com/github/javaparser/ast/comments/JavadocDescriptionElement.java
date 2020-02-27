@@ -23,16 +23,21 @@ package com.github.javaparser.ast.comments;
 import com.github.javaparser.TokenRange;
 import com.github.javaparser.ast.AllFieldsConstructor;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.metamodel.JavadocDescriptionElementMetaModel;
+import com.github.javaparser.metamodel.JavaParserMetaModel;
+import com.github.javaparser.ast.Generated;
 
 /**
- * A node inside a JavadocDescription. Could either be a text snippet or inline tag. 
- * 
+ * A node inside a JavadocDescription. Could either be a text snippet or inline tag.
+ *
  * @author Simon Sirak & David Johansson
  */
-public abstract class JavadocDescriptionElement extends Node  {
+public abstract class JavadocDescriptionElement extends Node {
+
     /**
      * Return the text content of the the description element.
-     * 
+     *
      * @return string content
      */
     public abstract String toText();
@@ -42,7 +47,40 @@ public abstract class JavadocDescriptionElement extends Node  {
         super(null);
     }
 
+    /**
+     * This constructor is used by the parser and is considered private.
+     */
+    @Generated("com.github.javaparser.generator.core.node.MainConstructorGenerator")
     public JavadocDescriptionElement(TokenRange tokenRange) {
         super(tokenRange);
-    }    
+        customInitialization();
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.RemoveMethodGenerator")
+    public boolean remove(Node node) {
+        if (node == null)
+            return false;
+        return super.remove(node);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.ReplaceMethodGenerator")
+    public boolean replace(Node node, Node replacementNode) {
+        if (node == null)
+            return false;
+        return super.replace(node, replacementNode);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.CloneGenerator")
+    public JavadocDescriptionElement clone() {
+        return (JavadocDescriptionElement) accept(new CloneVisitor(), null);
+    }
+
+    @Override
+    @Generated("com.github.javaparser.generator.core.node.GetMetaModelGenerator")
+    public JavadocDescriptionElementMetaModel getMetaModel() {
+        return JavaParserMetaModel.javadocDescriptionElementMetaModel;
+    }
 }

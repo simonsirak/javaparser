@@ -55,7 +55,6 @@ class JavadocTest {
         // REQ 2
         JavadocSnippet snippet = new JavadocSnippet("first line" + EOL + "second line");
         JavadocDescription description = new JavadocDescription(new NodeList<JavadocDescriptionElement>().addFirst(snippet));
-        assertEquals("first line" + EOL + "second line", description.toText());
         JavadocContent javadoc = new JavadocContent(description, new NodeList<JavadocBlockTag>());
         assertEquals("first line" + EOL + "second line" + EOL, javadoc.toText());
     }
@@ -73,7 +72,7 @@ class JavadocTest {
         JavadocBlockTag tag = new JavadocBlockTag(tagDescription, JavadocBlockTag.BlockTagType.AUTHOR);
 
         NodeList<JavadocBlockTag> tags = new NodeList<JavadocBlockTag>().addLast(tag);
-        JavadocContent javadoc = new JavadocContent(null, description, tags);
+        JavadocContent javadoc = new JavadocContent("", description, tags);
         assertEquals("first line" + EOL + "second line" + EOL + EOL + "@author something useful" + EOL, javadoc.toText());
     }
 
