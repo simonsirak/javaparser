@@ -1,40 +1,14 @@
 options {
   STATIC=false;
-  COMMON_TOKEN_ACTION=true;
   JDK_VERSION = "1.8";
-  TOKEN_EXTENDS ="TokenBase";
-  JAVA_TEMPLATE_TYPE = "modern";
 }
 
 PARSER_BEGIN(GeneratedJavaDocParser)
 
-package com.github.javaparser;
-import java.io.*;
-import java.util.*;
-import com.github.javaparser.ast.*;
-import com.github.javaparser.ast.body.*;
-import com.github.javaparser.ast.comments.*;
-import com.github.javaparser.ast.modules.*;
-import com.github.javaparser.ast.expr.*;
-import com.github.javaparser.ast.stmt.*;
-import com.github.javaparser.ast.type.*;
-import com.github.javaparser.utils.*;
-import static com.github.javaparser.JavaToken.INVALID;
-import static com.github.javaparser.ast.Node.Parsedness.UNPARSABLE;
-import static com.github.javaparser.utils.Utils.*;
-import static com.github.javaparser.ast.NodeList.*;
-import static com.github.javaparser.GeneratedJavaParser.*;
-import static com.github.javaparser.Range.*;
-import static com.github.javaparser.Position.*;
-import static com.github.javaparser.ast.type.ArrayType.*;
-import static com.github.javaparser.GeneratedJavaParserTokenManagerBase.*;
-import static com.github.javaparser.ast.stmt.SwitchEntry.Type.*;
-
-@Generated("JavaCC")
 class GeneratedJavaDocParser {
-    static void main() {
-        GeneratedJavaDocParser parser = new GeneratedJavaDocParser( System.in ) ;
-        System.out.println(parser.Start()); 
+    public static void main(String args[]) throws ParseException {
+      GeneratedJavaDocParser parser = new GeneratedJavaDocParser(System.in);
+      parser.Start();
     }
 }
 
@@ -46,54 +20,83 @@ SPECIAL_TOKEN :
 {
   <SPACE: [" ", "\t", "\f", "\u0085", "\u00A0", "\u1680", "\u180e", "\u2000", "\u2001", "\u2002", "\u2003", "\u2004", "\u2005",
       "\u2006", "\u2007", "\u2008", "\u2009", "\u200a", "\u200b", "\u200c", "\u200d", "\u2028", "\u2029", "\u202f", "\u205f", "\u2060", "\u3000", "\ufeff"]>
+}
+
+TOKEN:
+{
+  <STAR: "*" ~["/"]>
+| <SLASH: "/">
+| <TEXT: (["a"-"z", "A"-"Z", "0"-"9", ".", ",", ":", "_", "(", ")", "{", "}", "#", "=", "-"])+ >
+| <TAG:
+    "@author"
+  | "@version"
+  | "@since"
+  | "@see"
+  | "@param"
+  | "@return"
+  | "@exception"
+  | "@throws"
+  | "@deprecated"
+  | "@InheritDoc"
+  | "@link"
+  | "@value"
+  | "@" <TEXT>
+  >
 | <WINDOWS_EOL : "\r\n">
 | <UNIX_EOL: "\n">
 | <OLD_MAC_EOL: "\r">
 }
 
-TOKEN:
+TOKEN :
 {
-    <STAR: "*">
-}
-
-MORE :
-{
-  <ENTER_JAVADOC_COMMENT: "/**" ~["/"]> { input_stream.backup(1); } : JAVADOC_LINE
-}
-
-<JAVADOC_LINE>
-MORE:
-{
-  <JAVADOC_LINE_CONTENT: ((<STAR>)? (<TAG> | <TEXT> | <HTMLTAG>)*)*> { System.out.println("line:"); System.out.println(image.toString()); } : IN_JAVADOC_COMMENT
-  | <#TEXT: (["a"-"z", "A"-"Z", "0"-"9", ".", ",", ":", "/", "_", "(", ")", "{", "}", "#", "=", "-"])+ >
-  | <#TAG:
-      "@author"
-      | "@version"
-      | "@since"
-      | "@see"
-      | "@param"
-      | "@return"
-      | "@exception"
-      | "@throws"
-      | "@deprecated"
-      | "@InheritDoc"
-      | "@link"
-      | "@value"
-      | "@" <TEXT>
-    >
-  | <#HTMLTAG:
-      "<" <TEXT> ">" (<TEXT>) "</" <TEXT> ">"
-      | "<" <TEXT> "/>"
-    >
-}
-
-<IN_JAVADOC_COMMENT>
-SPECIAL_TOKEN :
-{
-  <JAVADOC_COMMENT: "*/" > : DEFAULT
+  <ENTER_JAVADOC_COMMENT: "/**" ~["/"]>
+|
+  <END_JAVADOC_COMMENT: "*/" >
 }
 
 void Start():
+{}
 {
+  LOOKAHEAD(2)
+  <ENTER_JAVADOC_COMMENT> NewLine() JavaLine()
+  { System.out.println("Success parse Javadoc"); }
+  |
+  <ENTER_JAVADOC_COMMENT> JavaLine()
+  { System.out.println("Success parse Javadoc"); }
+}
 
+void JavaLine():
+{}
+{
+  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead())* ContinueComment()
+}
+
+void ContinueComment():
+{}
+{
+  LOOKAHEAD(2)
+  NewLine() JavaLine()
+  |
+  <END_JAVADOC_COMMENT>
+}
+
+void HtmlTagHead():
+{}
+{
+  "<" HtmlTag()
+}
+
+void HtmlTag():
+{}
+{
+  LOOKAHEAD(2)
+  <TEXT> ">" (<TEXT> | <SLASH> | HtmlTagHead())* "</" <TEXT> ">"
+  | 
+  <TEXT> "/>"
+}
+
+void NewLine():
+{}
+{
+  <WINDOWS_EOL> | <UNIX_EOL> | <OLD_MAC_EOL>
 }
