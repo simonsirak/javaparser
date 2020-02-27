@@ -137,6 +137,7 @@ class CommentTest {
         // Act
         methodDeclaration.removeComment();
 
+
         // Assert
         assertEqualsNoEol("public class MyClass {\n" +
                 "\n" +

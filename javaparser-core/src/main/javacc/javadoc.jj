@@ -4,11 +4,13 @@ options {
 }
 
 PARSER_BEGIN(GeneratedJavaDocParser)
+package com.github.javadocparser;
+import com.github.javaparser.ast.comments.*;
 
 class GeneratedJavaDocParser {
-    public static void main(String args[]) throws ParseException {
-      GeneratedJavaDocParser parser = new GeneratedJavaDocParser(System.in);
-      parser.Start();
+    public Comment parse() throws ParseException {
+      GeneratedJavaDocParser parser = new GeneratedJavaDocParser(System.in, java.nio.charset.StandardCharsets.UTF_8);
+      return parser.Start();
     }
 }
 
@@ -54,7 +56,7 @@ TOKEN :
   <END_JAVADOC_COMMENT: "*/" >
 }
 
-void Start():
+JavadocComment Start():
 {}
 {
   LOOKAHEAD(2)
