@@ -27,7 +27,7 @@ SPECIAL_TOKEN :
 
 TOKEN:
 {
-  <STAR: "*" ~["/"]>
+  <STAR: "*">
 | <SLASH: "/">
 | <TEXT: (["a"-"z", "A"-"Z", "0"-"9", ".", ",", ":", "_", "(", ")", "{", "}", "#", "=", "-"])+ >
 | <TAG:
@@ -57,11 +57,11 @@ TOKEN :
 void Start():
 {}
 {
-  <ENTER_JAVADOC_COMMENT> JavaLine()
+  <ENTER_JAVADOC_COMMENT> JavaDocLine()
   { System.out.println("Success parse Javadoc"); }
 }
 
-void JavaLine():
+void JavaDocLine():
 {}
 {
   (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead()) ContinueComment() <END_JAVADOC_COMMENT>
