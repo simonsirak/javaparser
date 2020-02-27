@@ -20,6 +20,9 @@ SPECIAL_TOKEN :
 {
   <SPACE: [" ", "\t", "\f", "\u0085", "\u00A0", "\u1680", "\u180e", "\u2000", "\u2001", "\u2002", "\u2003", "\u2004", "\u2005",
       "\u2006", "\u2007", "\u2008", "\u2009", "\u200a", "\u200b", "\u200c", "\u200d", "\u2028", "\u2029", "\u202f", "\u205f", "\u2060", "\u3000", "\ufeff"]>
+| <WINDOWS_EOL : "\r\n">
+| <UNIX_EOL: "\n">
+| <OLD_MAC_EOL: "\r">
 }
 
 TOKEN:
@@ -42,9 +45,6 @@ TOKEN:
   | "@value"
   | "@" <TEXT>
   >
-| <WINDOWS_EOL : "\r\n">
-| <UNIX_EOL: "\n">
-| <OLD_MAC_EOL: "\r">
 }
 
 TOKEN :
@@ -57,10 +57,6 @@ TOKEN :
 void Start():
 {}
 {
-  LOOKAHEAD(2)
-  <ENTER_JAVADOC_COMMENT> NewLine() JavaLine()
-  { System.out.println("Success parse Javadoc"); }
-  |
   <ENTER_JAVADOC_COMMENT> JavaLine()
   { System.out.println("Success parse Javadoc"); }
 }
@@ -68,16 +64,15 @@ void Start():
 void JavaLine():
 {}
 {
-  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead())* ContinueComment()
+  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead()) ContinueComment() <END_JAVADOC_COMMENT>
+  |
+  <END_JAVADOC_COMMENT>
 }
 
 void ContinueComment():
 {}
 {
-  LOOKAHEAD(2)
-  NewLine() JavaLine()
-  |
-  <END_JAVADOC_COMMENT>
+  (<STAR> | <TAG> | <TEXT> | <SLASH> | HtmlTagHead())*
 }
 
 void HtmlTagHead():
@@ -93,10 +88,4 @@ void HtmlTag():
   <TEXT> ">" (<TEXT> | <SLASH> | HtmlTagHead())* "</" <TEXT> ">"
   | 
   <TEXT> "/>"
-}
-
-void NewLine():
-{}
-{
-  <WINDOWS_EOL> | <UNIX_EOL> | <OLD_MAC_EOL>
 }
